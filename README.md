@@ -7,7 +7,7 @@ Installation
 ============
 
 
-    pip install git+git://github.com/ko1es/django-youtubefield.git
+    pip install git+git://github.com/ajatamayo/django-youtubefield.git
 
 
 Basic usage
