@@ -14,7 +14,12 @@ def validate_youtube_url(value):
         # ignore embed params
         if 'embed' in value.value and '?' in value.value:
             value.value = value.value[:value.value.rfind('?')]
-        con = urllib2.urlopen(value.value)
+
+        try:
+            con = urllib2.urlopen(value.value)
+        except ValueError:
+            raise forms.ValidationError(_(u'Try prepending the url with https://'))
+
         if con.code != 200:
             raise forms.ValidationError(_(u'Not a valid Youtube URL'))
         if value.value[:16] == 'http://youtu.be/':
